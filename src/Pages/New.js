@@ -2,7 +2,7 @@ import NewTransactionForm from "../Components/TransactionNewForm";
 
 const New = ({ addTransaction }) => {
   return (
-    <div id="new-transaction">
+    <div className="component">
       <h2>Add a new item</h2>
       <NewTransactionForm addTransaction={addTransaction} />
     </div>

@@ -31,11 +31,10 @@ const TransactionDetails = ({ deleteTransaction }) => {
 
   return (
     <section>
-      <p>{transaction.title} - By {transaction.captainName}</p>
-      <p>{transaction.title}</p>
-      <p>{transaction.post}</p>
-      <p>{transaction.mistakesWereMadeToday}</p>
-      <p>Days since last crisis: {transaction.daysSinceLastCrisis}</p>
+      <p>{transaction.from} - By {transaction.captainName}</p>
+      <p>{transaction.name}</p>
+      <p>{transaction.date}</p>
+      <p>{transaction.amount}</p>
       <div className="showNavigation">
         <div>
           {" "}
