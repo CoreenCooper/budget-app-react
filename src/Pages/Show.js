@@ -1,16 +1,12 @@
 import TransactionDetails from "../Components/TransactionDetails";
 
-const Show = ({ deleteTransaction }) => {
+const Show = () => {
   return (
-    <div className="Show">
-      <h2>Show</h2>
-      <section>
-        <TransactionDetails
-          deleteTransaction={deleteTransaction}
-        />
-      </section>
-    </div>
+    <section className="component">
+      <h2>Transaction Details</h2>
+      <TransactionDetails />
+    </section>
   );
-}
+};
 
 export default Show;

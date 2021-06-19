@@ -1,9 +1,9 @@
 import Transactions from "../Components/Transactions";
 
-const Index = ({transactions, accountTotal}) => {
+const Index = ({transactions, total}) => {
   return (
     <section className="component">
-      <h2>Bank Account Total: {accountTotal}</h2>
+      <h2>Bank Account Total: {total}</h2>
       <Transactions transactions={transactions}/>
     </section>
   );

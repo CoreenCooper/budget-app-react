@@ -9,7 +9,6 @@ ul {
   padding: inherit;
 }
 
-
 #navbar {
   display: flex;
   justify-content: space-around;
@@ -49,14 +48,13 @@ ul {
 }
 
 .component {
-  margin: 50px;
-  width: 50vw;
+  margin: auto;
+  width: 30vw; 
+  border: orange solid 2px;
 }
 
 li {
-
-  border: springgreen solid 2px;
-
+  border-bottom: rgba(0, 0, 128, 50%) solid 1px;
 }
 
 a {
@@ -74,6 +72,7 @@ input {
   margin-bottom: 10px;
   margin-top: 5px;
 }
+
 button {
   width: 150px;
 }

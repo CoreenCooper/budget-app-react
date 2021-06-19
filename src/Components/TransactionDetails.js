@@ -1,14 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useParams, useHistory, withRouter } from "react-router-dom";
-
+import { Link, useParams, withRouter } from "react-router-dom";
 import { apiURL } from "../util/apiURL";
 const API = apiURL();
 
-const TransactionDetails = ({ deleteTransaction }) => {
+const TransactionDetails = () => {
   const [transaction, setTransaction] = useState({});
   let { index } = useParams();
-  let history = useHistory();
 
   const fetchTransaction = async () => {
     try {
@@ -24,37 +22,17 @@ const TransactionDetails = ({ deleteTransaction }) => {
     // eslint-disable-next-line
   }, []);
 
-  const handleDelete = () => {
-    deleteTransaction(index);
-    history.push("/transactions");
-  };
-
   return (
-    <section>
-      <p>{transaction.from} - By {transaction.captainName}</p>
-      <p>{transaction.name}</p>
-      <p>{transaction.date}</p>
-      <p>{transaction.amount}</p>
-      <div className="showNavigation">
-        <div>
-          {" "}
-          <Link to={`/transactions`}>
-            <button>Back</button>
-          </Link>
-        </div>
-        <div>
-          {" "}
-          <Link to={`/transactions/${index}/edit`}>
-            <button>Edit</button>
-          </Link>
-        </div>
-        <div>
-          {" "}
-          <button onClick={handleDelete}>Delete</button>
-        </div>
-      </div>
+    <section id="transaction-details">
+      <p>From: {transaction.from}</p>
+      <p>Name: {transaction.name}</p>
+      <p>Date: {transaction.date}</p>
+      <p>Amount: {transaction.amount}</p>
+      <Link to={`/transactions`}>
+        <button>Back</button>
+      </Link>
     </section>
   );
-}
+};
 
 export default withRouter(TransactionDetails);

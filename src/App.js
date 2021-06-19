@@ -2,8 +2,6 @@ import NavBar from "./Components/NavBar";
 import Index from "./Pages/Index";
 import New from "./Pages/New";
 import Show from "./Pages/Show";
-import Edit from "./Pages/Edit";
-import { v4 as uuid } from 'uuid';
 import { Route, Switch } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { apiURL } from "./util/apiURL";
@@ -12,48 +10,37 @@ import axios from "axios";
 const API = apiURL();
 
 const App = () => {
-  const [transactions, settransactions] = useState([]);
+  const [transactions, setTransactions] = useState([]);
 
-  const addTransactions = async (newTransactions) => {
+  const addTransaction = async (newTransactions) => {
     try {
       const res = await axios.post(`${API}/transactions`, newTransactions);
-      settransactions((prevtransactions) => [...prevtransactions, res.data]);
-    } catch (error) {}
-  };
-
-  const updateTransactions = async (updatedTransactions, index) => {
-    try {
-      await axios.put(`${API}/transactions/${index}`, updatedTransactions);
-      const newtransactions = [...transactions];
-      newtransactions[index] = updatedTransactions;
-      settransactions(newtransactions);
+      setTransactions((prevTransactions) => [...prevTransactions, res.data]);
     } catch (error) {
-      console.Transactions(error);
+      console.log(error);
     }
   };
 
-  const deleteTransactions = async (index) => {
-    try {
-    await axios.delete(`${API}/transactions/${index}/`);
-    let dummyState = [...transactions];
-    dummyState = transactions.splice(index, 1)
-    settransactions(dummyState)
-    } catch (error) {
-      console.Transactions(error)
-    }
-  }
-
-  const fetchtransactions = async () => {
+  const fetchTransactions = async () => {
     try {
       const res = await axios.get(`${API}/transactions`);
-      settransactions(res.data);
+      setTransactions(res.data);
     } catch (error) {
-      console.Transactions(error);
+      console.log(error);
     }
+  };
+
+  const getTotal = () => {
+    let total = 0;
+    transactions.forEach((transaction) => {
+      total += (Number(transaction.amount))
+    });
+    return total
   };
 
   useEffect(() => {
-    fetchtransactions();
+    fetchTransactions();
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -61,16 +48,13 @@ const App = () => {
       <NavBar />
       <Switch>
         <Route exact path="/transactions">
-          <Index transactions={transactions} uuidv4={uuid}/>
+          <Index transactions={transactions} total={getTotal()} />
         </Route>
         <Route path="/transactions/new">
-          <New addTransactions={addTransactions} />
-        </Route>
-        <Route path="/transactions/:index/edit">
-          <Edit updateTransactions={updateTransactions} />
+          <New addTransaction={addTransaction} />
         </Route>
         <Route exact path="/transactions/:index">
-          <Show deleteTransactions={deleteTransactions}/>
+          <Show />
         </Route>
       </Switch>
     </div>

@@ -3,16 +3,14 @@ const Transactions = ({ transactions }) => {
     <section>
       <ul>
         {transactions.map((transaction, index) => {
-          // debugger
           return (
             // not certain why key doesn't display in dev tools
             <li key={index} index={index} className="transactions">
-                <p>{transaction.date}
-                  </p>
+              <p>{transaction.date}</p>
               <a href={`/transactions/${index}`} className="transaction-link">
                 {transaction.name}
               </a>
-                <p>{transaction.amount}</p>
+              <p>{transaction.amount}</p>
             </li>
           );
         })}

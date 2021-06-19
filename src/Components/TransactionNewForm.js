@@ -1,35 +1,26 @@
 import { useState } from "react";
 import { withRouter } from "react-router-dom";
 
-const TransactionNewForm = (props) => {
+const TransactionNewForm = ({ addTransaction, history }) => {
   const [transaction, setTransaction] = useState({
-    captainName: "",
-    title: "",
-    post: "",
-    mistakesWereMadeToday: false,
-    daysSinceLastCrisis: 0,
+    date: "",
+    name: "",
+    amount: "",
+    from: "",
   });
 
-  const handleChange = (event) => {
-    setTransaction({ ...transaction, [event.target.id]: event.target.value });
-  };
-
-  const handleCheckboxChange = () => {
-    setTransaction({
-      ...transaction,
-      mistakesWereMadeToday: !transaction.mistakesWereMadeToday,
-    });
+  const handleChange = (e) => {
+    setTransaction({ ...transaction, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { addtransaction, history } = props;
-    addtransaction(transaction);
+    addTransaction(transaction);
     history.push("/transactions");
   };
 
   return (
-    <section className="new-transaction">
+    <section id="new-transaction">
       <form id="new-transaction-form" onSubmit={handleSubmit}>
         <label htmlFor="date">Date</label>
         <input
@@ -63,7 +54,7 @@ const TransactionNewForm = (props) => {
           type="text"
           value={transaction.from}
           placeholder="from"
-          onChange={handleCheckboxChange}
+          onChange={handleChange}
         />
         <button type="submit">CREATE NEW ITEM</button>
       </form>
