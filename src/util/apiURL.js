@@ -6,7 +6,8 @@
 
 export const apiURL = () => {
   if (process.env.NODE_ENV === "production") {
-    return "https://peaceful-cliffs-68239.herokuapp.com/";
+    console.log(process.env.NODE_ENV);
+    return "https://peaceful-cliffs-68239.herokuapp.com";
   } else if (process.env.NODE_ENV === "development") {
     return "http://localhost:3001";
   }
