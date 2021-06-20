@@ -14,7 +14,7 @@ const App = () => {
 
   const addTransaction = async (newTransactions) => {
     try {
-      const res = await axios.post(`https://peaceful-cliffs-68239.herokuapp.com/transactions`, newTransactions);
+      const res = await axios.post(`${API}/transactions`, newTransactions);
       setTransactions((prevTransactions) => [...prevTransactions, res.data]);
     } catch (error) {
       console.log(error);
@@ -23,7 +23,7 @@ const App = () => {
 
   const fetchTransactions = async () => {
     try {
-      const res = await axios.get(`https://peaceful-cliffs-68239.herokuapp.com/transactions`);
+      const res = await axios.get(`${API}/transactions`);
       setTransactions(res.data);
     } catch (error) {
       console.log(error);
@@ -44,7 +44,7 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <NavBar />
       <Switch>
         <Route exact path="/transactions">
@@ -57,7 +57,7 @@ const App = () => {
           <Show />
         </Route>
       </Switch>
-    </>
+    </div>
   );
 };
 
