@@ -10,7 +10,7 @@ const TransactionDetails = () => {
 
   const fetchTransaction = async () => {
     try {
-      const res = await axios.get(`${API}/transactions/${index}`);
+      const res = await axios.get(`https://peaceful-cliffs-68239.herokuapp.com/transactions/${index}`);
       setTransaction(res.data);
     } catch (err) {
       console.log(err);
