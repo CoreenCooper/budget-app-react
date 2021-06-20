@@ -2,10 +2,10 @@ import Transactions from "../Components/Transactions";
 
 const Index = ({transactions, total}) => {
   return (
-    <section className="component">
-      <h2>Bank Account Total: {total}</h2>
+    <main className="component">
+      <h2>Bank Account Total: ${total.toFixed(2)}</h2>
       <Transactions transactions={transactions}/>
-    </section>
+    </main>
   );
 };
 

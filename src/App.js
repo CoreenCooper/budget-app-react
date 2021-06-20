@@ -44,7 +44,7 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <NavBar />
       <Switch>
         <Route exact path="/transactions">
@@ -57,7 +57,7 @@ const App = () => {
           <Show />
         </Route>
       </Switch>
-    </div>
+    </>
   );
 };
 
