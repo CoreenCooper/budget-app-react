@@ -10,7 +10,9 @@ const TransactionDetails = () => {
 
   const fetchTransaction = async () => {
     try {
-      const res = await axios.get(`${API}/transactions/${index}`);
+      const res = await axios.get(`https://heuristic-bell-bc5407.netlify.app/transactions/${index}`);
+      console.log(res.data);
+      // debugger
       setTransaction(res.data);
     } catch (err) {
       console.log(err);
