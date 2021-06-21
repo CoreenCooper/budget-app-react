@@ -1,6 +1,5 @@
 export const apiURL = () => {
-  if (process.env.NODE_ENV === "development") {
-    return "https://peaceful-cliffs-68239.herokuapp.com/";
-  }
-  return "";
+  return process.env.NODE_ENV === "production"
+    ? "https://peaceful-cliffs-68239.herokuapp.com"
+    : "http://localhost:3001";
 };
