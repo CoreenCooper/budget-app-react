@@ -1,3 +1,4 @@
+import {Link } from "react-router-dom";
 const Transactions = ({ transactions }) => {
   return (
       <ul>
@@ -5,9 +6,9 @@ const Transactions = ({ transactions }) => {
           return (
             <li key={index} className="transactions">
               <p>{transaction.date}</p>
-              <a href={`/transactions/${index}`} className="transaction-link">
+              <Link to={`/transactions/${index}`} className="transaction-link">
                 {transaction.name}
-              </a>
+              </Link>
               <p>{transaction.amount}</p>
             </li>
           );
