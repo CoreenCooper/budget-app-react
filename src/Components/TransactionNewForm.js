@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { withRouter } from "react-router-dom";
 
 const TransactionNewForm = ({ addTransaction, history }) => {
   const [transaction, setTransaction] = useState({
@@ -62,4 +61,4 @@ const TransactionNewForm = ({ addTransaction, history }) => {
   );
 };
 
-export default withRouter(TransactionNewForm);
+export default TransactionNewForm;

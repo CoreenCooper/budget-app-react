@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useParams, withRouter } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { apiURL } from "../util/apiURL";
 const API = apiURL();
 
@@ -8,19 +8,17 @@ const TransactionDetails = () => {
   const [transaction, setTransaction] = useState({});
   let { index } = useParams();
 
-  const fetchTransaction = async () => {
-    try {
-      const res = await axios.get(`${API}/transactions/${index}`);
-      setTransaction(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
+    const fetchTransaction = async () => {
+      try {
+        const res = await axios.get(`${API}/transactions/${index}`);
+        setTransaction(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
     fetchTransaction();
-    // eslint-disable-next-line
-  }, []);
+  }, [index]);
 
   return (
     <section id="transaction-details">
@@ -35,4 +33,4 @@ const TransactionDetails = () => {
   );
 };
 
-export default withRouter(TransactionDetails);
+export default TransactionDetails;
